@@ -36,13 +36,14 @@ from cryptography.fernet import Fernet
 import numpy as np
 import easyocr
 import tenseal as ts
+from flask_cors import CORS
 
 
 load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24) 
-CORS(app, origins=["http://localhost:5173"], supports_credentials=True)
+CORS(app)
 
 DATA_FOLDER = "data_storage"
 os.makedirs(DATA_FOLDER, exist_ok=True)
@@ -690,7 +691,13 @@ if __name__ == "__main__":
     print("  - POST /preview  : Prévisualiser détections")
     print("  - POST /upload   : Détection simple (zones)")
     print("  - POST /mask     : Masquer zones détectées")
+
     port = int(os.environ.get("PORT", 5000))
-    app.run(debug=True, host="0.0.0.0", port=port)   
+    app.run(
+        debug=True, 
+        host="0.0.0.0", 
+        port=port,
+        use_reloader=False 
+    )
 
 

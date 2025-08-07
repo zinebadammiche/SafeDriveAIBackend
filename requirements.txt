@@ -1,3 +1,4 @@
+# === Essentials fournis par toi
 blinker==1.9.0
 cachetools==5.5.2
 certifi==2025.7.14
@@ -77,3 +78,9 @@ uritemplate==4.2.0
 urllib3==2.5.0
 Werkzeug==3.1.3
 gunicorn
+openpyxl
+
+# === Ajouts nécessaires pour tes imports ===
+python-docx             # Pour: from docx import Document
+presidio-analyzer       # Pour: from presidio_analyzer import AnalyzerEngine
+presidio-anonymizer     # Pour: from presidio_anonymizer import AnonymizerEngine
