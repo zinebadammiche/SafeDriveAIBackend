@@ -12,8 +12,6 @@ from werkzeug.utils import secure_filename
 from googleapiclient.http import MediaFileUpload
 from googleapiclient.discovery import build
 
-from app import update_global_metadata
-
 auth_bp = Blueprint("auth", __name__)
 
 # Allow HTTP for local testing
@@ -332,6 +330,7 @@ def save_safe_file():
             "flags": 0
         }, meta_f)
 
+    from app import update_global_metadata
     # Update global metadata so dashboard displays correctly
     update_global_metadata(
         name,                 # base name (without extension)
